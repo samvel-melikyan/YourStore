@@ -481,7 +481,7 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('test', async ({ page }) => {
+    test.only('test', async ({ page }) => {
       const mp3 = page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a');
       await mp3.click();
       let test1 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[1]/li').elementHandles();
@@ -493,9 +493,7 @@ test.describe('Menu Bar', () => {
 
       for (const text of tests) {
         console.log(text);
-        
         await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a').click();
-        await page.waitForTimeout(1000);
       
         const elem = page.getByText(text).first(); // safer re-selection
         await elem.click();
@@ -504,7 +502,6 @@ test.describe('Menu Bar', () => {
         await expect(testTitle).toBeVisible();
         await expect(testTitle).toContainText(text.slice(0, -4));
       
-        await page.reload();
       }
     });
 
