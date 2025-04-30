@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Menu Bar', () => {
   test.describe('Desktops', () => {
+
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -98,6 +99,7 @@ test.describe('Menu Bar', () => {
 
 
   test.describe('Laptops & Notebooks', () => {
+
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -196,6 +198,7 @@ test.describe('Menu Bar', () => {
 
 
   test.describe('Components', () => {
+
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -396,6 +399,7 @@ test.describe('Menu Bar', () => {
 
 
   test.describe('Tablets', () => {
+
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -411,6 +415,7 @@ test.describe('Menu Bar', () => {
   });
 
   test.describe('Software', () => {
+
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -427,6 +432,7 @@ test.describe('Menu Bar', () => {
 
 
   test.describe('Phones & PDAs', () => {
+
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -443,6 +449,7 @@ test.describe('Menu Bar', () => {
 
 
   test.describe('Cameras', () => {
+
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -458,6 +465,7 @@ test.describe('Menu Bar', () => {
   });
 
   test.describe('MP3 Players', () => {
+
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -483,7 +491,6 @@ test.describe('Menu Bar', () => {
       let testsElems = test1.concat(test2, test3, test4);
       let tests = await Promise.all(testsElems.map(async (test) => await test.innerText()));
 
-
       for (const text of tests) {
         console.log(text);
         
@@ -499,13 +506,6 @@ test.describe('Menu Bar', () => {
       
         await page.reload();
       }
-
-
-
-      
-      
-
-
     });
 
 
@@ -521,11 +521,7 @@ test.describe('Menu Bar', () => {
       await expect (allMp3Title).toHaveText('MP3 Players');
     });
 
-
-
   });
   
-
-
 });
 
