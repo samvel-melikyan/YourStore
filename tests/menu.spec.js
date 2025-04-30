@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { log, time } from 'console';
 test.describe('Menu Bar', () => {
-  test.skip('Desktops', () => {
+  test.describe('Desktops', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -97,7 +97,7 @@ test.describe('Menu Bar', () => {
   });
 
 
-  test.skip('Laptops & Notebooks', () => {
+  test.describe('Laptops & Notebooks', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -195,7 +195,7 @@ test.describe('Menu Bar', () => {
   });
 
 
-  test.skip('Components', () => {
+  test.describe('Components', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -395,7 +395,7 @@ test.describe('Menu Bar', () => {
   });
 
 
-  test.skip('Tablets', () => {
+  test.describe('Tablets', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -410,7 +410,7 @@ test.describe('Menu Bar', () => {
     });
   });
 
-  test.skip('Software', () => {
+  test.describe('Software', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -426,7 +426,7 @@ test.describe('Menu Bar', () => {
   });
 
 
-  test.skip('Phones & PDAs', () => {
+  test.describe('Phones & PDAs', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -442,7 +442,7 @@ test.describe('Menu Bar', () => {
   });
 
 
-  test.skip('Cameras', () => {
+  test.describe('Cameras', () => {
     test.beforeEach(async ({ page }) => {
       await page.goto('');
     });
@@ -519,7 +519,7 @@ test.describe('Menu Bar', () => {
       //     }
         // }
       // }
-    });
+    // });
 
 
     test('Show all products', async ({ page }) => {
