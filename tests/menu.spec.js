@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { log, time } from 'console';
+
 test.describe('Menu Bar', () => {
   test.describe('Desktops', () => {
     test.beforeEach(async ({ page }) => {
@@ -473,53 +473,40 @@ test.describe('Menu Bar', () => {
     });
 
 
-    // test('test', async ({ page }) => {
-    //   const mp3 = page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a');
-    //   await mp3.click();
-    //   let test1 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[1]/li').elementHandles();
-    //   let test2 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[2]/li').elementHandles();
-    //   let test3 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[3]/li').elementHandles();
-    //   let test4 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[4]/li').elementHandles();
-    //   let tests = test1.concat(test2, test3, test4);
-    //   console.log(tests.length);
-    //   for (let i of tests){
-        
-    //     await mp3.click();
+    test('test', async ({ page }) => {
+      const mp3 = page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a');
+      await mp3.click();
+      let test1 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[1]/li').elementHandles();
+      let test2 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[2]/li').elementHandles();
+      let test3 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[3]/li').elementHandles();
+      let test4 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[4]/li').elementHandles();
+      let testsElems = test1.concat(test2, test3, test4);
+      let tests = await Promise.all(testsElems.map(async (test) => await test.innerText()));
 
+
+      for (const text of tests) {
+        console.log(text);
         
-    //     console.log(await i.innerText());
-    //     await i.click();
-    //   }
+        await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a').click();
+        await page.waitForTimeout(1000);
+      
+        const elem = page.getByText(text).first(); // safer re-selection
+        await elem.click();
+      
+        const testTitle = page.locator('//*[@id="content"]/h2');
+        await expect(testTitle).toBeVisible();
+        await expect(testTitle).toContainText(text.slice(0, -4));
+      
+        await page.reload();
+      }
+
+
+
       
       
 
-      // for (let i = 1; i < 5; i++){
-      //   if (i == 4){
-      //     for (let j = 1; j < 4; j++){
-      //       await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a').click(); 
-      //       const test = page.locator(`//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[${i}]/li${j}/a`);
-      //       let title = await test.innerText();
-      //       console.log(title);
-      //       await test.click();
-      //       const testTitle = page.locator('//*[@id="content"]/h2');
-      //       await expect (testTitle).toBeVisible();
-      //       await expect (testTitle).toContainText(title.slice(0, -4));
-      //     }
-      //   }
-      //   else{
-      //     for (let j = 1; j < 6; j++){
-      //       await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a').click(); 
-      //       const test = page.locator(`//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[${i}]/li${j}/a`);
-      //       let title = await test.innerText();            
-      //       console.log(title);
-      //       await test.click();
-      //       const testTitle = page.locator('//*[@id="content"]/h2');
-      //       await expect (testTitle).toBeVisible();
-      //       await expect (testTitle).toContainText(title.slice(0, -4));
-      //     }
-        // }
-      // }
-    // });
+
+    });
 
 
     test('Show all products', async ({ page }) => {
@@ -541,3 +528,4 @@ test.describe('Menu Bar', () => {
 
 
 });
+
