@@ -19,31 +19,7 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('PC : click', async ({ page }) => {
-      const desktops = page.locator('//*[@id="menu"]/div[2]/ul/li[1]/a');
-      await desktops.click();
-      const pc = page.locator('//*[@id="menu"]/div[2]/ul/li[1]/div/div/ul/li[1]/a');
-      await expect (pc).toBeVisible();
-      await pc.click();
-      const pcTitle = page.locator('//*[@id="content"]/h2');
-      await expect (pcTitle).toBeVisible();
-      await expect (pcTitle).toHaveText('PC');
-    });
-
-
-    test('MAC : click', async ({ page }) => {
-      const desktops = page.locator('//*[@id="menu"]/div[2]/ul/li[1]/a');
-      await desktops.click();
-      const mac = page.locator('//*[@id="menu"]/div[2]/ul/li[1]/div/div/ul/li[2]/a');
-      await expect (mac).toBeVisible();
-      await mac.click();
-      const macTitle = page.locator('//*[@id="content"]/h2');
-      await expect (macTitle).toBeVisible();
-      await expect (macTitle).toHaveText('Mac');
-    });
-
-
-    test('PC : amount of products', async ({ page }) => {
+    test('PC : click & amount of products', async ({ page }) => {
       const desktops = page.locator('//*[@id="menu"]/div[2]/ul/li[1]/a');
       await desktops.click();
       const pc = page.locator('//*[@id="menu"]/div[2]/ul/li[1]/div/div/ul/li[1]/a');
@@ -64,7 +40,7 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('MAC : amount of products', async ({ page }) => {
+    test('MAC : click &  amount of products', async ({ page }) => {
       const desktops = page.locator('//*[@id="menu"]/div[2]/ul/li[1]/a');
       await desktops.click();
       const mac = page.locator('//*[@id="menu"]/div[2]/ul/li[1]/div/div/ul/li[2]/a');
@@ -118,31 +94,9 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('MAC : click', async ({ page }) => {
-      const laptops = page.locator('//*[@id="menu"]/div[2]/ul/li[2]/a');
-      await laptops.click();
-      const mac = page.locator('//*[@id="menu"]/div[2]/ul/li[2]/div/div/ul/li[1]/a');
-      await expect (mac).toBeVisible();
-      await mac.click();
-      const macTitle = page.locator('//*[@id="content"]/h2');
-      await expect (macTitle).toBeVisible();
-      await expect (macTitle).toHaveText('Macs');
-    });
-
-    
-    test('Windows : click', async ({ page }) => {
-      const laptops = page.locator('//*[@id="menu"]/div[2]/ul/li[2]/a');
-      await laptops.click();
-      const windows = page.locator('//*[@id="menu"]/div[2]/ul/li[2]/div/div/ul/li[2]/a');
-      await expect (windows).toBeVisible();
-      await windows.click();
-      const windowsTitle = page.locator('//*[@id="content"]/h2');
-      await expect (windowsTitle).toBeVisible();
-      await expect (windowsTitle).toHaveText('Windows');
-    });
 
 
-    test('MAC : amount of products', async ({ page }) => {
+    test('MAC : click &  amount of products', async ({ page }) => {
       const laptops = page.locator('//*[@id="menu"]/div[2]/ul/li[2]/a');
       await laptops.click();
       const mac = page.locator('//*[@id="menu"]/div[2]/ul/li[2]/div/div/ul/li[1]/a');
@@ -163,7 +117,7 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('Windows : amount of products', async ({ page }) => {
+    test('Windows : click &  amount of products', async ({ page }) => {
       const laptops = page.locator('//*[@id="menu"]/div[2]/ul/li[2]/a');
       await laptops.click();
       const windows = page.locator('//*[@id="menu"]/div[2]/ul/li[2]/div/div/ul/li[2]/a');
@@ -231,55 +185,8 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('Monitors : click', async ({ page }) => {
-      const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
-      await components.click();
-      const monitors = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[2]/a');
-      await expect (monitors).toBeVisible();
-      await monitors.click();
-      const monitorsTitle = page.locator('//*[@id="content"]/h2');
-      await expect (monitorsTitle).toBeVisible();
-      await expect (monitorsTitle).toHaveText('Monitors');
-    });
 
-
-    test('Printers : click', async ({ page }) => {
-      const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
-      await components.click();
-      const printers = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[3]/a');
-      await expect (printers).toBeVisible();
-      await printers.click();
-      const printersTitle = page.locator('//*[@id="content"]/h2');
-      await expect (printersTitle).toBeVisible();
-      await expect (printersTitle).toHaveText('Printers');
-    });
-
-
-    test('Scanners : click', async ({ page }) => {
-      const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
-      await components.click();
-      const scanners = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[4]/a');
-      await expect (scanners).toBeVisible();
-      await scanners.click();
-      const scannersTitle = page.locator('//*[@id="content"]/h2');
-      await expect (scannersTitle).toBeVisible();
-      await expect (scannersTitle).toHaveText('Scanners');
-    });
-
-
-    test('Web Cameras : click', async ({ page }) => {
-      const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
-      await components.click();
-      const webCameras = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[5]/a');
-      await expect (webCameras).toBeVisible();
-      await webCameras.click();
-      const webCamerasTitle = page.locator('//*[@id="content"]/h2');
-      await expect (webCamerasTitle).toBeVisible();
-      await expect (webCamerasTitle).toHaveText('Web Cameras');
-    });
-
-
-    test('Mice : amount of products', async ({ page }) => {
+    test('Mice : click &  amount of products', async ({ page }) => {
       const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
       await components.click();
       const mice = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[1]/a');
@@ -301,7 +208,7 @@ test.describe('Menu Bar', () => {
 
 
 
-    test('Monitors : amount of products', async ({ page }) => {
+    test('Monitors : click &  amount of products', async ({ page }) => {
       const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
       await components.click();
       const monitors = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[2]/a');
@@ -322,7 +229,7 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('Printers : amount of products', async ({ page }) => {
+    test('Printers : click &  amount of products', async ({ page }) => {
       const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
       await components.click();
       const printers = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[3]/a');
@@ -343,7 +250,7 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('Scanners : amount of products', async ({ page }) => {
+    test('Scanners : click &  amount of products', async ({ page }) => {
       const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
       await components.click();
       const scanners = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[4]/a');
@@ -364,7 +271,7 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test('Web Cameras : amount of products', async ({ page }) => {
+    test('Web Cameras : click &  amount of products', async ({ page }) => {
       const components = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/a');
       await components.click();
       const webCameras = page.locator('//*[@id="menu"]/div[2]/ul/li[3]/div/div/ul/li[5]/a');
@@ -481,7 +388,7 @@ test.describe('Menu Bar', () => {
     });
 
 
-    test.only('test', async ({ page }) => {
+    test('Mp3 items in the submenu of MP3', async ({ page }) => {
       const mp3 = page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a');
       await mp3.click();
       let test1 = await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/div/div/ul[1]/li').elementHandles();
@@ -492,7 +399,7 @@ test.describe('Menu Bar', () => {
       let tests = await Promise.all(testsElems.map(async (test) => await test.innerText()));
 
       for (const text of tests) {
-        console.log(text);
+        // console.log(text);
         await page.locator('//*[@id="menu"]/div[2]/ul/li[8]/a').click();
       
         const elem = page.getByText(text).first(); // safer re-selection
@@ -501,7 +408,16 @@ test.describe('Menu Bar', () => {
         const testTitle = page.locator('//*[@id="content"]/h2');
         await expect(testTitle).toBeVisible();
         await expect(testTitle).toContainText(text.slice(0, -4));
-      
+
+        const amountInMenu = Number(text.slice(text.indexOf('(') + 1, text.indexOf(')')));
+        let products = null;
+        try {
+          products = await page.locator('.product-thumb').elementHandles();
+        } catch (error) {
+          products = [];
+        }
+        const amountInThePage = products.length;
+        await expect (amountInThePage).toBe(amountInMenu);
       }
     });
 
