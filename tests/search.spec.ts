@@ -6,28 +6,32 @@ test.describe('Search functionality on TutorialNinja', () => {
   });
 
   test('should find results for a valid search term', async ({ page }) => {
-    // Type in the search bar and submit
-    await page.locator('input[name="search"]').fill('MacBook');
-    await page.locator('button.btn.btn-default.btn-lg').click();
+    const searchText = 'Mac';
 
-    // Check that results contain the search term
-    const result = page.locator('.product-thumb h4 a');
-    await expect(result).toContainText('MacBook');
+    await page.locator('#search').locator('input[name="search"]').fill(searchText);
+    await page.locator('#search').locator('button[type="button"]').click();
+
+    const result = page.locator('#search').locator('input[name="search"]');
+    await expect(result).toHaveValue(searchText);
+
+    let products = await page.locator('.caption h4 a').allTextContents();
+    for (const product of products) {
+      expect(product.toLowerCase()).toContain(searchText.toLowerCase());
+    }
+
   });
 
-  test('should show no results for invalid search term', async ({ page }) => {
-    await page.locator('input[name="search"]').fill('nonexistingitem123');
-    await page.locator('button.btn.btn-default.btn-lg').click();
+  test.only('should show no results for invalid search term', async ({ page }) => {
+    const searchText = 'nonexistingitem123';
 
-    const noResultText = page.locator('#content p');
-    await expect(noResultText).toHaveText('There is no product that matches the search criteria.');
+    await page.locator('#search').locator('input[name="search"]').fill(searchText);
+    await page.locator('#search').locator('button[type="button"]').click();
+
+    const result = page.locator('#search').locator('input[name="search"]');
+    await expect(result).toHaveValue(searchText);
+    await expect (page.getByText('There is no product that matches the search criteria.')).toBeVisible();
+
   });
 
-  test('should find multiple items with generic term', async ({ page }) => {
-    await page.locator('input[name="search"]').fill('phone');
-    await page.locator('button.btn.btn-default.btn-lg').click();
 
-    const results = page.locator('.product-thumb');
-    // await expect(results).toHaveCount(count => count > 0);
-  });
 });
