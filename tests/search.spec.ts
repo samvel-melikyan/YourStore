@@ -67,7 +67,7 @@ test.describe('Search functionality', () => {
   });
 
 
-  test.only('search term is trimmed before and after search', async ({ page }) => {
+  test('search term is trimmed before and after search', async ({ page }) => {
     const raw = '   Mac    ';
     const term = raw.trim().toLowerCase();
   
