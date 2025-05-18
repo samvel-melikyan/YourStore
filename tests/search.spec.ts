@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 
+
+const searchTerms = ['Mac', 'phone'];
+
 test.describe('Search functionality', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('');
@@ -12,24 +15,22 @@ test.describe('Search functionality', () => {
   });
 
 
-  test('should find results for a valid search term', async ({ page }) => {
-    const searchInput = page.locator('#search').locator('input[name="search"]')
-    const searchButton = page.locator('#search').locator('button[type="button"]');
+  test.describe.only('Search with positive values' , () => {
+    for (const term of searchTerms) {
+      test(`should show results for search term: ${term}`, async ({ page }) => {
+        const searchInput = page.locator('#search').locator('input[name="search"]');
+        const searchButton = page.locator('.btn.btn-default.btn-lg');
 
-    await searchInput.fill('Mac');
-    await searchButton.click();
-    let products = await page.locator('.caption h4 a').allTextContents();
-    for (const product of products) {
-      expect(product.toLowerCase()).toContain('mac');
+        await searchInput.fill(term);
+        await searchButton.click();
+
+        const products = await page.locator('.caption h4 a').allTextContents();
+        for (const product of products) {
+          expect(product.toLowerCase()).toContain(term.toLowerCase());
+        }
+      });
     }
-    
-    await searchInput.fill('phone');
-    await searchButton.click();
-    products = await page.locator('.caption h4 a').allTextContents();
-    for (const product of products) {
-      expect(product.toLowerCase()).toContain('phone');
-    }
-  });
+  })
 
 
   test('should show no results for invalid search term', async ({ page }) => {
