@@ -21,6 +21,7 @@ test.describe('Search functionality on TutorialNinja', () => {
 
   });
 
+ 
   test.only('should show no results for invalid search term', async ({ page }) => {
     const searchText = 'nonexistingitem123';
 
