@@ -58,7 +58,7 @@ test.describe('Shopping Cart', () => {
     });
 
     
-    test.only('Proceed to view the cart', async ({ page }) => {
+    test('Proceed to view the cart', async ({ page }) => {
         await page.getByRole('button', { name: 'Add to Cart' }).first().click();
         await page.locator('#cart-total').click();
         await page.locator('.dropdown-menu.pull-right p.text-right a').filter({ hasText: 'View Cart' }).click();
