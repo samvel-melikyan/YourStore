@@ -15,7 +15,8 @@ test.describe('Search functionality', () => {
   });
 
 
-  test.describe.only('Search with positive values' , () => {
+  test.describe('Search with positive values' , () => {
+    
     for (const term of searchTerms) {
       test(`should show results for search term: ${term}`, async ({ page }) => {
         const searchInput = page.locator('#search').locator('input[name="search"]');
@@ -45,7 +46,7 @@ test.describe('Search functionality', () => {
     await expect (page.getByText('There is no product that matches the search criteria.')).toBeVisible();
   });
 
-  
+
   test('should show no results for invalid search term', async ({ page }) => {
     const searchText = 'nonexistingitem123';
 
