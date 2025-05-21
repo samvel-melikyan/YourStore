@@ -49,7 +49,7 @@ test.describe('Search functionality', () => {
 
   });
 
-  test.only('should show no results for invalid search term', async ({ page }) => {
+  test('should show no results for invalid search term', async ({ page }) => {
     const searchText = 'nonexistingitem123';
 
     await page.locator('#search').locator('input[name="search"]').fill(searchText);
