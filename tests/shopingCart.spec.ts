@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Cart', () => {
+test.describe('Shopping Cart', () => {
 
     let cartText: () => Promise<string | null>;
 
