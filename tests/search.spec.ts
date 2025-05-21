@@ -33,22 +33,19 @@ test.describe('Search functionality', () => {
   })
 
 
-  test('should show no results for invalid search term', async ({ page }) => {
-    const searchText = 'nonexistingitem123';
+  test('should show no results for empty search term', async ({ page }) => {
+    const searchInput = page.locator('#search').locator('input[name="search"]');
+    const searchButton = page.locator('.btn.btn-default.btn-lg');
 
-    await page.locator('#search').locator('input[name="search"]').fill(searchText);
-    await page.locator('#search').locator('button[type="button"]').click();
+    await searchInput.fill('');
+    await searchButton.click();
 
     const result = page.locator('#search').locator('input[name="search"]');
-    await expect(result).toHaveValue(searchText);
-
-    let products = await page.locator('.caption h4 a').allTextContents();
-    for (const product of products) {
-      expect(product.toLowerCase()).toContain(searchText.toLowerCase());
-    }
-
+    await expect(result).toHaveValue('');
+    await expect (page.getByText('There is no product that matches the search criteria.')).toBeVisible();
   });
 
+  
   test('should show no results for invalid search term', async ({ page }) => {
     const searchText = 'nonexistingitem123';
 
