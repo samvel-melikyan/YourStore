@@ -8,7 +8,8 @@ export default defineConfig({
 
   retries: 0,
 
-  reporter: 'html',
+  // reporter: 'html',
+
   use: {
     baseURL: 'https://tutorialsninja.com/demo/index.php',
   },
