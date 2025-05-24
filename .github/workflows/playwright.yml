@@ -34,11 +34,11 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run all tests
-        if: ${{ github.event.inputs.test_suite == 'all' }}
+        if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.test_suite == 'all' }}
         run: npx playwright test
 
       - name: Run smoke tests
-        if: ${{ github.event.inputs.test_suite == 'smoke' }}
+        if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test_suite == 'smoke' }}
         run: npx playwright test --grep @smoke
 
       - name: Upload Playwright report
