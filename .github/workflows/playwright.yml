@@ -42,7 +42,7 @@ jobs:
         run: npx playwright test --grep @smoke
 
       - name: Upload Playwright report
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && success() && hashFiles('playwright-report/index.html') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
