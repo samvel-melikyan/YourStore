@@ -98,7 +98,7 @@ test.describe('A full testing of the shopping basket', () => {
     });
 
 
-    test.only('Adding same item twice functions currectly', async ({ page }) => {
+    test('Adding same item twice functions currectly', async ({ page }) => {
         await addToCart(page, 'mac', 0, 2); // Add 2 iMacs
         const text = await page.getByRole('button', { name: /2 item\(s\)/ }).innerText();
         expect(text).toContain('2 item(s)');
